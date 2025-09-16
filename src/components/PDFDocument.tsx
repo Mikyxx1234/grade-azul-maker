@@ -252,43 +252,30 @@ export function PDFDocument({ gradeCurricular }: PDFDocumentProps) {
         </View>
       </Page>
       
-      {/* Páginas da Grade Curricular */}
-      {paginas.map((paginaDisciplinas, indexPagina) => (
-       Page size="A4" style={styles.page}>
+     {/* Grade Curricular – lista contínua */}
+<Page size="A4" style={styles.page}>
   <View style={styles.gradePage}>
-    {/* Cabeçalho da tabela (uma vez só, no topo da listagem) */}
+    {/* Cabeçalho da tabela */}
     <View style={styles.tableHeader}>
       <Text style={styles.tableHeaderCell1}>#</Text>
       <Text style={styles.tableHeaderCell2}>DISCIPLINA</Text>
       <Text style={styles.tableHeaderCell2}>CARGA HORÁRIA</Text>
     </View>
-            {/* HEADER DA TABELA APENAS NA PRIMEIRA PÁGINA DA LISTA */}
-            {indexPagina === 0 && (
-              <View style={styles.tableHeader}>
-                <Text style={styles.tableHeaderCell1}>#</Text>
-                <Text style={styles.tableHeaderCell2}>DISCIPLINA</Text>
-                <Text style={styles.tableHeaderCell2}>CARGA HORÁRIA</Text>
-              </View>
-            )}
-            
-            <View style={styles.table}>
-              {/* LISTA CONTÍNUA SEM QUEBRAS */}
-              {paginaDisciplinas.map((disciplina, index) => (
-                <View key={disciplina.id} style={index % 2 === 0 ? styles.tableRow : styles.tableRowAlt}>
-                  <Text style={styles.tableCell1}>
-                    {(indexPagina * disciplinasPorPagina) + index + 1}.
-                  </Text>
-                  <Text style={styles.tableCell1Content}>{disciplina.nome}</Text>
-                  <Text style={styles.tableCell2}>{disciplina.cargaHoraria}h</Text>
-                </View>
-              ))}
-            </View>
-          </View>
-          
-          {/* RODAPÉ APENAS NA ÚLTIMA PÁGINA */}
-          {indexPagina === paginas.length - 1 && (
-            <View style={styles.footer}>
-             <Text
+
+    {/* Todas as disciplinas em uma lista contínua */}
+    <View style={styles.table}>
+      {disciplinas.map((disciplina, index) => (
+        <View key={disciplina.id} style={index % 2 === 0 ? styles.tableRow : styles.tableRowAlt}>
+          <Text style={styles.tableCell1}>{index + 1}.</Text>
+          <Text style={styles.tableCell1Content}>{disciplina.nome}</Text>
+          <Text style={styles.tableCell2}>{disciplina.cargaHoraria}h</Text>
+        </View>
+      ))}
+    </View>
+  </View>
+
+  {/* Rodapé só na última página */}
+  <Text
     fixed
     style={styles.footer}
     render={({ pageNumber, totalPages }) =>
@@ -298,6 +285,7 @@ export function PDFDocument({ gradeCurricular }: PDFDocumentProps) {
     }
   />
 </Page>
+
       ))}
     </Document>
   );
