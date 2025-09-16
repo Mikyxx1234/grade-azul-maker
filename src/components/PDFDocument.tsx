@@ -224,12 +224,6 @@ const styles = StyleSheet.create({
 export function PDFDocument({ gradeCurricular }: PDFDocumentProps) {
   const { dadosCurso, disciplinas, totalDisciplinas, totalCargaHoraria } = gradeCurricular;
   
-  // Pagination logic
-  const disciplinasPorPagina = 36;
-  const paginas = [];
-  for (let i = 0; i < disciplinas.length; i += disciplinasPorPagina) {
-    paginas.push(disciplinas.slice(i, i + disciplinasPorPagina));
-  }
   
   return (
     <Document>
@@ -260,8 +254,14 @@ export function PDFDocument({ gradeCurricular }: PDFDocumentProps) {
       
       {/* Páginas da Grade Curricular */}
       {paginas.map((paginaDisciplinas, indexPagina) => (
-        <Page key={indexPagina} size="A4" style={styles.page}>
-          <View style={styles.gradePage}>
+       Page size="A4" style={styles.page}>
+  <View style={styles.gradePage}>
+    {/* Cabeçalho da tabela (uma vez só, no topo da listagem) */}
+    <View style={styles.tableHeader}>
+      <Text style={styles.tableHeaderCell1}>#</Text>
+      <Text style={styles.tableHeaderCell2}>DISCIPLINA</Text>
+      <Text style={styles.tableHeaderCell2}>CARGA HORÁRIA</Text>
+    </View>
             {/* HEADER DA TABELA APENAS NA PRIMEIRA PÁGINA DA LISTA */}
             {indexPagina === 0 && (
               <View style={styles.tableHeader}>
@@ -288,12 +288,16 @@ export function PDFDocument({ gradeCurricular }: PDFDocumentProps) {
           {/* RODAPÉ APENAS NA ÚLTIMA PÁGINA */}
           {indexPagina === paginas.length - 1 && (
             <View style={styles.footer}>
-              <Text>
-                A grade curricular está sujeita a alterações conforme necessário para garantir a qualidade do ensino de acordo com o MEC.
-              </Text>
-            </View>
-          )}
-        </Page>
+             <Text
+    fixed
+    style={styles.footer}
+    render={({ pageNumber, totalPages }) =>
+      pageNumber === totalPages
+        ? 'A grade curricular está sujeita a alterações conforme necessário para garantir a qualidade do ensino de acordo com o MEC.'
+        : ''
+    }
+  />
+</Page>
       ))}
     </Document>
   );
