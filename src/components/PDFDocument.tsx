@@ -286,7 +286,6 @@ export function PDFDocument({ gradeCurricular }: PDFDocumentProps) {
   />
 </Page>
 
-      ))}
     </Document>
   );
 }
