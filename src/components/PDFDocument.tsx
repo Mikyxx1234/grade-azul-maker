@@ -1,4 +1,5 @@
 import { Document, Page, Text, View, StyleSheet, Image } from '@react-pdf/renderer';
+import { Svg, Defs, LinearGradient, Stop, Rect } from '@react-pdf/renderer';
 import { GradeCurricular } from '@/types';
 
 interface PDFDocumentProps {
@@ -14,6 +15,7 @@ const styles = StyleSheet.create({
   // Estilos da Capa
   coverPage: {
     padding: 0,
+    flex: 1
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
