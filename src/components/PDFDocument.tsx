@@ -227,9 +227,11 @@ export function PDFDocument({ gradeCurricular }: PDFDocumentProps) {
       {paginas.map((paginaDisciplinas, indexPagina) => (
         <Page key={indexPagina} size="A4" style={styles.page}>
           <View style={styles.gradePage}>
-            <View style={styles.header}>
-              <Text style={styles.headerTitle}>Grade Curricular - {dadosCurso.nomeCurso}</Text>
-            </View>
+            {indexPagina === 0 && (
+              <View style={styles.header}>
+                <Text style={styles.headerTitle}>Grade Curricular - {dadosCurso.nomeCurso}</Text>
+              </View>
+            )}
             
             <View style={styles.table}>
               <View style={styles.tableHeader}>
