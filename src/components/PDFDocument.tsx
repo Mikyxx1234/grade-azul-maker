@@ -32,56 +32,67 @@ const styles = StyleSheet.create({
   },
   
   logo: {
-    width: 120,
-    height: 48,
-    marginBottom: 40,
+    width: 180,
+    height: 72,
+    marginBottom: 50,
     objectFit: 'contain',
     alignSelf: 'center',
   },
   
   courseTitle: {
-    fontSize: 28,
+    fontSize: 32,
     fontWeight: 'bold',
-    marginBottom: 12,
+    marginBottom: 15,
     textTransform: 'uppercase',
-    letterSpacing: 1,
+    letterSpacing: 1.5,
     color: '#001f4a',
+    textAlign: 'center',
   },
   
   subtitle: {
-    fontSize: 16,
-    marginBottom: 25,
+    fontSize: 18,
+    marginBottom: 35,
     fontWeight: 'normal',
     color: '#001f4a',
+    textAlign: 'center',
+    fontStyle: 'italic',
   },
   
   courseInfo: {
-    fontSize: 13,
-    marginBottom: 6,
-    fontWeight: 'normal',
+    fontSize: 14,
+    marginBottom: 8,
+    fontWeight: 'bold',
     color: '#001f4a',
+    textAlign: 'center',
   },
   
   summary: {
-    marginTop: 30,
-    padding: 15,
-    backgroundColor: 'rgba(255, 255, 255, 0.8)',
-    borderRadius: 10,
-    border: '1px solid rgba(0, 31, 74, 0.1)',
-    boxShadow: '0 4px 12px rgba(0, 31, 74, 0.1)',
+    marginTop: 40,
+    padding: 25,
+    backgroundColor: 'rgba(255, 255, 255, 0.95)',
+    borderRadius: 15,
+    border: '2px solid rgba(0, 31, 74, 0.2)',
+    boxShadow: '0 8px 25px rgba(0, 31, 74, 0.15)',
+    maxWidth: 400,
+    alignSelf: 'center',
   },
   
   summaryTitle: {
-    fontSize: 15,
+    fontSize: 16,
     fontWeight: 'bold',
-    marginBottom: 8,
+    marginBottom: 12,
     color: '#001f4a',
+    textAlign: 'center',
+    textTransform: 'uppercase',
+    letterSpacing: 0.5,
   },
   
   summaryText: {
-    fontSize: 13,
-    marginBottom: 4,
+    fontSize: 14,
+    marginBottom: 6,
     color: '#001f4a',
+    textAlign: 'center',
+    fontWeight: 'bold',
   },
   
   // Estilos das páginas de grade
