@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
   // Estilos da Capa
   coverPage: {
     position: 'relative',
-    padding: 50,
+    padding: 0,
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
@@ -32,12 +32,21 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     objectFit: 'cover',
+    zIndex: 1,
   },
   
   coverContent: {
-    zIndex: 10,
+    position: 'relative',
+    zIndex: 2,
     textAlign: 'center',
     color: 'white',
+    padding: 50,
+    width: '100%',
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   
   logo: {
