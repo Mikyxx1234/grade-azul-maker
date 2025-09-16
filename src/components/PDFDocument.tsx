@@ -145,18 +145,19 @@ const styles = StyleSheet.create({
   },
   
   tableHeaderCell1: {
-    flex: 0.7, // Adjusted flex for numbering
-    fontSize: 10, // Increased for better readability
-    fontWeight: 'bold',
-    width: '10%', // Give some width for the number
-  },
-  
-  tableHeaderCell2: {
     flex: 3, // Adjusted flex for discipline name
     fontSize: 10, // Increased for better readability
     fontWeight: 'bold',
     textAlign: 'left', // Align left for discipline name
     width: '70%', // Give more width for the name
+  },
+  
+  tableHeaderCell2: {
+    flex: 1,
+    fontSize: 10, // Increased for better readability
+    fontWeight: 'bold',
+    textAlign: 'center',
+    width: '30%',
   },
   
   tableRow: {
@@ -181,15 +182,6 @@ const styles = StyleSheet.create({
   },
   
   tableCell1: {
-    flex: 0.7, // Adjusted flex for numbering
-    fontSize: 9, // Increased for better readability
-    paddingRight: 4, // Adjusted padding
-    margin: 0,
-    lineHeight: 1.4, // Adjusted for better readability
-    width: '10%', // Consistent width
-    textAlign: 'right', // Align number to the right
-  },
-  tableCell1Content: { // New style for discipline name
     flex: 3, // Adjusted flex for discipline name
     fontSize: 9, // Increased for better readability
     paddingLeft: 4, // Add padding to separate number from name
@@ -242,11 +234,9 @@ export function PDFDocument({ gradeCurricular }: PDFDocumentProps) {
             <Text style={styles.courseInfo}>Tipo de Formação: {dadosCurso.tipoFormacao}</Text>
             <Text style={styles.courseInfo}>Duração: {dadosCurso.duracao}</Text>
             <Text style={styles.courseInfo}>Modalidade: {dadosCurso.modalidade}</Text>
-            
-            <View style={styles.summary}>
+                <Text style={styles.tableCell1}>{disciplina.nome}</Text>
               <Text style={styles.summaryTitle}>Resumo do Curso</Text>
-              <Text style={styles.summaryText}>Total de Disciplinas: {totalDisciplinas}</Text>
-              <Text style={styles.summaryText}>Carga Horária Total: {totalCargaHoraria}h</Text>
+            <Text style={styles.tableHeaderCell1}>DISCIPLINA</Text>
             </View>
           </View>
         </View>
