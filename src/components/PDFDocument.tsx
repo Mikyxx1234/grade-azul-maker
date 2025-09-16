@@ -122,7 +122,6 @@ const styles = StyleSheet.create({
   },
   
   table: {
-    marginTop: 20,
   },
   
   tableHeader: {
@@ -234,10 +233,12 @@ export function PDFDocument({ gradeCurricular }: PDFDocumentProps) {
             )}
             
             <View style={styles.table}>
+              {indexPagina === 0 && (
               <View style={styles.tableHeader}>
                 <Text style={styles.tableHeaderCell1}>DISCIPLINA</Text>
                 <Text style={styles.tableHeaderCell2}>CARGA HORÁRIA</Text>
               </View>
+              )}
               
               {paginaDisciplinas.map((disciplina, index) => (
                 <View key={disciplina.id} style={index % 2 === 0 ? styles.tableRow : styles.tableRowAlt}>
