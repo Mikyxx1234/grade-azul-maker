@@ -145,11 +145,11 @@ const styles = StyleSheet.create({
   },
   
   tableHeaderCell1: {
-    flex: 3, // Adjusted flex for discipline name
+    flex: 4, // More space for discipline name
     fontSize: 10, // Increased for better readability
     fontWeight: 'bold',
     textAlign: 'left', // Align left for discipline name
-    width: '70%', // Give more width for the name
+    width: '75%', // Give more width for the name
   },
   
   tableHeaderCell2: {
@@ -157,7 +157,7 @@ const styles = StyleSheet.create({
     fontSize: 10, // Increased for better readability
     fontWeight: 'bold',
     textAlign: 'center',
-    width: '30%',
+    width: '25%',
   },
   
   tableRow: {
@@ -182,7 +182,7 @@ const styles = StyleSheet.create({
   },
   
   tableCell1: {
-    flex: 3, // Adjusted flex for discipline name
+    flex: 4, // More space for discipline name
     fontSize: 9, // Increased for better readability
     paddingLeft: 4, // Add padding to separate number from name
     paddingRight: 8,
@@ -249,8 +249,7 @@ export function PDFDocument({ gradeCurricular }: PDFDocumentProps) {
   <View style={styles.gradePage}>
     {/* Cabeçalho da tabela */}
     <View style={styles.tableHeader}>
-      <Text style={styles.tableHeaderCell1}>#</Text>
-      <Text style={styles.tableHeaderCell2}>DISCIPLINA</Text>
+      <Text style={styles.tableHeaderCell1}>DISCIPLINA</Text>
       <Text style={styles.tableHeaderCell2}>CARGA HORÁRIA</Text>
     </View>
 
@@ -258,8 +257,7 @@ export function PDFDocument({ gradeCurricular }: PDFDocumentProps) {
     <View style={styles.table}>
       {disciplinas.map((disciplina, index) => (
         <View key={disciplina.id} style={index % 2 === 0 ? styles.tableRow : styles.tableRowAlt}>
-          <Text style={styles.tableCell1}>{index + 1}.</Text>
-          <Text style={styles.tableCell1Content}>{disciplina.nome}</Text>
+          <Text style={styles.tableCell1}>{disciplina.nome}</Text>
           <Text style={styles.tableCell2}>{disciplina.cargaHoraria}h</Text>
         </View>
       ))}
