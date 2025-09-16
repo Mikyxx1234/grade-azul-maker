@@ -224,6 +224,11 @@ const styles = StyleSheet.create({
 export function PDFDocument({ gradeCurricular }: PDFDocumentProps) {
   const { dadosCurso, disciplinas, totalDisciplinas, totalCargaHoraria } = gradeCurricular;
   
+  // Pagination logic
+  const disciplinasPorPagina = 36;
+  const paginas = [];
+  for (let i = 0; i < disciplinas.length; i += disciplinasPorPagina) {
+    paginas.push(disciplinas.slice(i, i + disciplinasPorPagina));
   }
   
   return (
@@ -256,22 +261,13 @@ export function PDFDocument({ gradeCurricular }: PDFDocumentProps) {
       {/* Páginas da Grade Curricular */}
       {paginas.map((paginaDisciplinas, indexPagina) => (
         <Page key={indexPagina} size="A4" style={styles.page}>
-          <View style={styles.table}>
-  {disciplinas.map((disciplina, index) => (
-    <View key={disciplina.id} style={index % 2 === 0 ? styles.tableRow : styles.tableRowAlt}>
-      <Text style={styles.tableCell1}>{index + 1}.</Text>
-      <Text style={styles.tableCell1Content}>{disciplina.nome}</Text>
-      <Text style={styles.tableCell2}>{disciplina.cargaHoraria}h</Text>
-    </View>
-  
-            )}
-            
+          <View style={styles.gradePage}>
             {/* HEADER DA TABELA APENAS NA PRIMEIRA PÁGINA DA LISTA */}
             {indexPagina === 0 && (
               <View style={styles.tableHeader}>
-                <Text style={styles.tableHeaderCell1}>#</Text> {/* Added numbering header */}
+                <Text style={styles.tableHeaderCell1}>#</Text>
                 <Text style={styles.tableHeaderCell2}>DISCIPLINA</Text>
-                <Text style={styles.tableHeaderCell2}>CARGA HORÁRIA</Text> {/* Adjusted to match tableCell2 */}
+                <Text style={styles.tableHeaderCell2}>CARGA HORÁRIA</Text>
               </View>
             )}
             
@@ -280,9 +276,9 @@ export function PDFDocument({ gradeCurricular }: PDFDocumentProps) {
               {paginaDisciplinas.map((disciplina, index) => (
                 <View key={disciplina.id} style={index % 2 === 0 ? styles.tableRow : styles.tableRowAlt}>
                   <Text style={styles.tableCell1}>
-                    {(indexPagina * disciplinasPorPagina) + index + 1}. {/* Continuous numbering */}
+                    {(indexPagina * disciplinasPorPagina) + index + 1}.
                   </Text>
-                  <Text style={styles.tableCell1Content}>{disciplina.nome}</Text> {/* New style for discipline name */}
+                  <Text style={styles.tableCell1Content}>{disciplina.nome}</Text>
                   <Text style={styles.tableCell2}>{disciplina.cargaHoraria}h</Text>
                 </View>
               ))}
@@ -301,4 +297,11 @@ export function PDFDocument({ gradeCurricular }: PDFDocumentProps) {
       ))}
     </Document>
   );
-}
+}</Text>
+          <View style={styles.table}>
+  {disciplinas.map((disciplina, index) => (
+    <View key={disciplina.id} style={index % 2 === 0 ? styles.tableRow : styles.tableRowAlt}>
+      <Text style={styles.tableCell1}>{index + 1}.</Text>
+      <Text style={styles.tableCell1Content}>{disciplina.nome}</Text>
+      <Text style={styles.tableCell2}>{disciplina.cargaHoraria}h</Text>
+    </View>
