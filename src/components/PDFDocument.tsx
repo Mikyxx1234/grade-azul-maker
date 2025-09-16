@@ -15,29 +15,25 @@ const styles = StyleSheet.create({
   // Estilos da Capa
   coverPage: {
     padding: 0,
-    flex: 1
+    flex: 1,
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
     minHeight: '100vh',
-    background: 'linear-gradient(135deg, #93c5fd 0%, #1e40af 100%)',
+    backgroundColor: '#86BFE2',
   },
-  
   coverContent: {
     textAlign: 'center',
     color: 'white',
     padding: 50,
     width: '100%',
     display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
   },
   
   logo: {
-    width: 200,
-    height: 80,
+    width: 150,
+    height: 60,
     marginBottom: 40,
     objectFit: 'contain',
   },
@@ -48,47 +44,43 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     textTransform: 'uppercase',
     letterSpacing: 1,
-    color: 'white',
-    textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3)',
+    color: '#001f4a',
   },
   
   subtitle: {
     fontSize: 18,
     marginBottom: 30,
     fontWeight: 'normal',
-    color: 'white',
-    textShadow: '1px 1px 2px rgba(0, 0, 0, 0.3)',
+    color: '#001f4a',
   },
   
   courseInfo: {
     fontSize: 14,
     marginBottom: 8,
     fontWeight: 'normal',
-    color: 'white',
-    textShadow: '1px 1px 2px rgba(0, 0, 0, 0.3)',
+    color: '#001f4a',
   },
   
   summary: {
     marginTop: 40,
     padding: 20,
-    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    backgroundColor: 'rgba(255, 255, 255, 0.8)',
     borderRadius: 10,
-    border: '1px solid rgba(255, 255, 255, 0.3)',
+    border: '1px solid rgba(0, 31, 74, 0.1)',
+    boxShadow: '0 4px 12px rgba(0, 31, 74, 0.1)',
   },
   
   summaryTitle: {
     fontSize: 16,
     fontWeight: 'bold',
     marginBottom: 10,
-    color: 'white',
-    textShadow: '1px 1px 2px rgba(0, 0, 0, 0.3)',
+    color: '#001f4a',
   },
   
   summaryText: {
     fontSize: 14,
     marginBottom: 5,
-    color: 'white',
-    textShadow: '1px 1px 2px rgba(0, 0, 0, 0.3)',
+    color: '#001f4a',
   },
   
   // Estilos das páginas de grade
@@ -198,6 +190,10 @@ export function PDFDocument({ gradeCurricular }: PDFDocumentProps) {
       <Page size="A4" style={styles.page}>
         <View style={styles.coverPage}>
           <View style={styles.coverContent}>
+            <Image 
+              style={styles.logo} 
+              src="https://images.pexels.com/photos/267350/pexels-photo-267350.jpeg?auto=compress&cs=tinysrgb&w=150&h=60&fit=crop"
+            />
             
             <Text style={styles.courseTitle}>{dadosCurso.nomeCurso}</Text>
             <Text style={styles.subtitle}>Grade Curricular</Text>
