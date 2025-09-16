@@ -135,25 +135,28 @@ const styles = StyleSheet.create({
   },
   
   tableHeader: {
-    flexDirection: 'row',
+    flexDirection: 'row', // Keep as row for header
     backgroundColor: '#3b82f6',
-    paddingVertical: 4,
-    paddingHorizontal: 4,
+    paddingVertical: 6, // Increased for better readability
+    paddingHorizontal: 8, // Increased for better readability
     color: 'white',
     margin: 0,
+    break: 'avoid', // Avoid breaking the header
   },
   
   tableHeaderCell1: {
-    flex: 3,
-    fontSize: 11,
+    flex: 0.7, // Adjusted flex for numbering
+    fontSize: 10, // Increased for better readability
     fontWeight: 'bold',
+    width: '10%', // Give some width for the number
   },
   
   tableHeaderCell2: {
-    flex: 1,
-    fontSize: 11,
+    flex: 3, // Adjusted flex for discipline name
+    fontSize: 10, // Increased for better readability
     fontWeight: 'bold',
-    textAlign: 'center',
+    textAlign: 'left', // Align left for discipline name
+    width: '70%', // Give more width for the name
   },
   
   tableRow: {
@@ -161,7 +164,9 @@ const styles = StyleSheet.create({
     borderBottom: '1 solid #e5e7eb',
     paddingVertical: 2,
     paddingHorizontal: 4,
+    paddingVertical: 4, // Adjusted for better line spacing
     margin: 0,
+    break: 'avoid', // Keep rows from breaking across pages
   },
   
   tableRowAlt: {
@@ -169,26 +174,38 @@ const styles = StyleSheet.create({
     borderBottom: '1 solid #e5e7eb',
     paddingVertical: 2,
     paddingHorizontal: 4,
+    paddingVertical: 4, // Adjusted for better line spacing
     backgroundColor: '#f8fafc',
     margin: 0,
+    break: 'avoid', // Keep rows from breaking across pages
   },
   
   tableCell1: {
-    flex: 3,
-    fontSize: 8,
+    flex: 0.7, // Adjusted flex for numbering
+    fontSize: 9, // Increased for better readability
+    paddingRight: 4, // Adjusted padding
+    margin: 0,
+    lineHeight: 1.4, // Adjusted for better readability
+    width: '10%', // Consistent width
+    textAlign: 'right', // Align number to the right
+  },
+  tableCell1Content: { // New style for discipline name
+    flex: 3, // Adjusted flex for discipline name
+    fontSize: 9, // Increased for better readability
+    paddingLeft: 4, // Add padding to separate number from name
     paddingRight: 8,
     margin: 0,
-    lineHeight: 1.2,
+    lineHeight: 1.4, // Adjusted for better readability
   },
   
   tableCell2: {
     flex: 1,
-    fontSize: 8,
+    fontSize: 9, // Increased for better readability
     textAlign: 'center',
     fontWeight: 'bold',
     color: '#1e40af',
     margin: 0,
-    lineHeight: 1.2,
+    lineHeight: 1.4, // Adjusted for better readability
   },
   
   footer: {
@@ -208,7 +225,7 @@ export function PDFDocument({ gradeCurricular }: PDFDocumentProps) {
   const { dadosCurso, disciplinas, totalDisciplinas, totalCargaHoraria } = gradeCurricular;
   
   // MÁXIMO APROVEITAMENTO - SEM ESPAÇOS EM BRANCO
-  const disciplinasPorPagina = 55;
+  const disciplinasPorPagina = 36; // Adjusted for better readability and to prevent white space
   const paginas: any[][] = [];
   
   for (let i = 0; i < disciplinas.length; i += disciplinasPorPagina) {
@@ -248,14 +265,17 @@ export function PDFDocument({ gradeCurricular }: PDFDocumentProps) {
           <View style={styles.gradePage}>
             {/* CABEÇALHO APENAS NA PRIMEIRA PÁGINA */}
             {indexPagina === 0 && (
-              <>
-                <View style={styles.header}>
-                  <Text style={styles.headerTitle}>Grade Curricular - {dadosCurso.nomeCurso}</Text>
-                </View>
-                <View style={styles.tableHeader}>
-                  <Text style={styles.tableHeaderCell1}>DISCIPLINA</Text>
-                  <Text style={styles.tableHeaderCell2}>CARGA HORÁRIA</Text>
-                </View>
+              <View style={styles.header}>
+                <Text style={styles.headerTitle}>Grade Curricular - {dadosCurso.nomeCurso}</Text>
+              </View>
+            )}
+            
+            {/* HEADER DA TABELA APENAS NA PRIMEIRA PÁGINA DA LISTA */}
+            {indexPagina === 0 && (
+              <View style={styles.tableHeader}>
+                <Text style={styles.tableHeaderCell1}>#</Text> {/* Added numbering header */}
+                <Text style={styles.tableHeaderCell2}>DISCIPLINA</Text>
+                <Text style={styles.tableHeaderCell2}>CARGA HORÁRIA</Text> {/* Adjusted to match tableCell2 */}
               </>
             )}
             
@@ -263,7 +283,10 @@ export function PDFDocument({ gradeCurricular }: PDFDocumentProps) {
               {/* LISTA CONTÍNUA SEM QUEBRAS */}
               {paginaDisciplinas.map((disciplina, index) => (
                 <View key={disciplina.id} style={index % 2 === 0 ? styles.tableRow : styles.tableRowAlt}>
-                  <Text style={styles.tableCell1}>{disciplina.nome}</Text>
+                  <Text style={styles.tableCell1}>
+                    {(indexPagina * disciplinasPorPagina) + index + 1}. {/* Continuous numbering */}
+                  </Text>
+                  <Text style={styles.tableCell1Content}>{disciplina.nome}</Text> {/* New style for discipline name */}
                   <Text style={styles.tableCell2}>{disciplina.cargaHoraria}h</Text>
                 </View>
               ))}
