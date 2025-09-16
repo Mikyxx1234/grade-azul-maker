@@ -32,38 +32,39 @@ const styles = StyleSheet.create({
   },
   
   logo: {
-    width: 150,
-    height: 60,
+    width: 120,
+    height: 48,
     marginBottom: 40,
     objectFit: 'contain',
+    alignSelf: 'center',
   },
   
   courseTitle: {
-    fontSize: 32,
+    fontSize: 28,
     fontWeight: 'bold',
-    marginBottom: 15,
+    marginBottom: 12,
     textTransform: 'uppercase',
     letterSpacing: 1,
     color: '#001f4a',
   },
   
   subtitle: {
-    fontSize: 18,
-    marginBottom: 30,
+    fontSize: 16,
+    marginBottom: 25,
     fontWeight: 'normal',
     color: '#001f4a',
   },
   
   courseInfo: {
-    fontSize: 14,
-    marginBottom: 8,
+    fontSize: 13,
+    marginBottom: 6,
     fontWeight: 'normal',
     color: '#001f4a',
   },
   
   summary: {
-    marginTop: 40,
-    padding: 20,
+    marginTop: 30,
+    padding: 15,
     backgroundColor: 'rgba(255, 255, 255, 0.8)',
     borderRadius: 10,
     border: '1px solid rgba(0, 31, 74, 0.1)',
@@ -71,15 +72,15 @@ const styles = StyleSheet.create({
   },
   
   summaryTitle: {
-    fontSize: 16,
+    fontSize: 15,
     fontWeight: 'bold',
-    marginBottom: 10,
+    marginBottom: 8,
     color: '#001f4a',
   },
   
   summaryText: {
-    fontSize: 14,
-    marginBottom: 5,
+    fontSize: 13,
+    marginBottom: 4,
     color: '#001f4a',
   },
   
@@ -192,7 +193,7 @@ export function PDFDocument({ gradeCurricular }: PDFDocumentProps) {
           <View style={styles.coverContent}>
             <Image 
               style={styles.logo} 
-              src="https://images.pexels.com/photos/267350/pexels-photo-267350.jpeg?auto=compress&cs=tinysrgb&w=150&h=60&fit=crop"
+              src="/logo teste.png"
             />
             
             <Text style={styles.courseTitle}>{dadosCurso.nomeCurso}</Text>
