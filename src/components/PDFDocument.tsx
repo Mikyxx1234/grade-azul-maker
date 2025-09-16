@@ -99,9 +99,10 @@ const styles = StyleSheet.create({
   
   // Estilos das páginas de grade
   gradePage: {
-    paddingHorizontal: 30,
+    paddingHorizontal: 25,
     paddingTop: 0,
     paddingBottom: 0,
+    margin: 0,
     backgroundColor: 'white',
     flex: 1,
   },
@@ -109,9 +110,10 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 15,
-    paddingBottom: 10,
-    paddingTop: 20,
+    marginBottom: 8,
+    paddingBottom: 6,
+    paddingTop: 15,
+    margin: 0,
     borderBottom: '2 solid #3b82f6',
   },
   
@@ -122,7 +124,7 @@ const styles = StyleSheet.create({
   },
   
   headerTitle: {
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: 'bold',
     color: '#1e40af',
   },
@@ -136,21 +138,21 @@ const styles = StyleSheet.create({
   tableHeader: {
     flexDirection: 'row',
     backgroundColor: '#3b82f6',
-    paddingVertical: 8,
-    paddingHorizontal: 8,
+    paddingVertical: 6,
+    paddingHorizontal: 6,
     color: 'white',
-    marginBottom: 0,
+    margin: 0,
   },
   
   tableHeaderCell1: {
     flex: 3,
-    fontSize: 12,
+    fontSize: 11,
     fontWeight: 'bold',
   },
   
   tableHeaderCell2: {
     flex: 1,
-    fontSize: 12,
+    fontSize: 11,
     fontWeight: 'bold',
     textAlign: 'center',
   },
@@ -158,36 +160,36 @@ const styles = StyleSheet.create({
   tableRow: {
     flexDirection: 'row',
     borderBottom: '1 solid #e5e7eb',
-    paddingVertical: 6,
-    paddingHorizontal: 8,
+    paddingVertical: 3,
+    paddingHorizontal: 6,
     margin: 0,
   },
   
   tableRowAlt: {
     flexDirection: 'row',
     borderBottom: '1 solid #e5e7eb',
-    paddingVertical: 6,
-    paddingHorizontal: 8,
+    paddingVertical: 3,
+    paddingHorizontal: 6,
     backgroundColor: '#f8fafc',
     margin: 0,
   },
   
   tableCell1: {
     flex: 3,
-    fontSize: 9,
+    fontSize: 8.5,
     paddingRight: 10,
     margin: 0,
-    lineHeight: 1.5,
+    lineHeight: 1.3,
   },
   
   tableCell2: {
     flex: 1,
-    fontSize: 9,
+    fontSize: 8.5,
     textAlign: 'center',
     fontWeight: 'bold',
     color: '#1e40af',
     margin: 0,
-    lineHeight: 1.5,
+    lineHeight: 1.3,
   },
   
   footer: {
@@ -206,8 +208,8 @@ const styles = StyleSheet.create({
 export function PDFDocument({ gradeCurricular }: PDFDocumentProps) {
   const { dadosCurso, disciplinas, totalDisciplinas, totalCargaHoraria } = gradeCurricular;
   
-  // Otimizar para máximo aproveitamento sem espaços em branco
-  const disciplinasPorPagina = 42;
+  // MÁXIMO APROVEITAMENTO - SEM ESPAÇOS EM BRANCO
+  const disciplinasPorPagina = 48;
   const paginas: any[][] = [];
   
   for (let i = 0; i < disciplinas.length; i += disciplinasPorPagina) {
@@ -245,7 +247,45 @@ export function PDFDocument({ gradeCurricular }: PDFDocumentProps) {
       {paginas.map((paginaDisciplinas, indexPagina) => (
         <Page key={indexPagina} size="A4" style={styles.page}>
           <View style={styles.gradePage}>
+            {/* CABEÇALHO APENAS NA PRIMEIRA PÁGINA */}
             {indexPagina === 0 && (
+              <View style={styles.header}>
+                <Text style={styles.headerTitle}>Grade Curricular - {dadosCurso.nomeCurso}</Text>
+              </View>
+            )}
+            
+            <View style={styles.table}>
+              {/* CABEÇALHO DA TABELA APENAS NA PRIMEIRA PÁGINA */}
+              {indexPagina === 0 && (
+                <View style={styles.tableHeader}>
+                  <Text style={styles.tableHeaderCell1}>DISCIPLINA</Text>
+                  <Text style={styles.tableHeaderCell2}>CARGA HORÁRIA</Text>
+                </View>
+              )}
+              
+              {/* LISTA CONTÍNUA SEM QUEBRAS */}
+              {paginaDisciplinas.map((disciplina, index) => (
+                <View key={disciplina.id} style={index % 2 === 0 ? styles.tableRow : styles.tableRowAlt}>
+                  <Text style={styles.tableCell1}>{disciplina.nome}</Text>
+                  <Text style={styles.tableCell2}>{disciplina.cargaHoraria}h</Text>
+                </View>
+              ))}
+            </View>
+          </View>
+          
+          {/* RODAPÉ APENAS NA ÚLTIMA PÁGINA */}
+          {indexPagina === paginas.length - 1 && (
+            <View style={styles.footer}>
+              <Text>
+                A grade curricular está sujeita a alterações conforme necessário para garantir a qualidade do ensino de acordo com o MEC.
+              </Text>
+            </View>
+          )}
+        </Page>
+      ))}
+    </Document>
+  );
+}
               <View style={styles.header}>
                 <Text style={styles.headerTitle}>Grade Curricular - {dadosCurso.nomeCurso}</Text>
               </View>
