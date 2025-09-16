@@ -234,8 +234,10 @@ export function PDFDocument({ gradeCurricular }: PDFDocumentProps) {
                 </View>
               ))}
             </View>
-            
-            <Text style={styles.footer}>
+          </View>
+          
+          <View style={styles.footer}>
+            <Text>
               A grade curricular está sujeita a alterações conforme necessário para garantir a qualidade do ensino de acordo com o MEC.
             </Text>
           </View>
