@@ -224,12 +224,6 @@ const styles = StyleSheet.create({
 export function PDFDocument({ gradeCurricular }: PDFDocumentProps) {
   const { dadosCurso, disciplinas, totalDisciplinas, totalCargaHoraria } = gradeCurricular;
   
-  // MÁXIMO APROVEITAMENTO - SEM ESPAÇOS EM BRANCO
-  const disciplinasPorPagina = 36; // Adjusted for better readability and to prevent white space
-  const paginas: any[][] = [];
-  
-  for (let i = 0; i < disciplinas.length; i += disciplinasPorPagina) {
-    paginas.push(disciplinas.slice(i, i + disciplinasPorPagina));
   }
   
   return (
@@ -262,12 +256,15 @@ export function PDFDocument({ gradeCurricular }: PDFDocumentProps) {
       {/* Páginas da Grade Curricular */}
       {paginas.map((paginaDisciplinas, indexPagina) => (
         <Page key={indexPagina} size="A4" style={styles.page}>
-          <View style={styles.gradePage}>
-            {/* CABEÇALHO APENAS NA PRIMEIRA PÁGINA */}
-            {indexPagina === 0 && (
-              <View style={styles.header}>
-                <Text style={styles.headerTitle}>Grade Curricular - {dadosCurso.nomeCurso}</Text>
-              </View>
+          <View style={styles.table}>
+  {disciplinas.map((disciplina, index) => (
+    <View key={disciplina.id} style={index % 2 === 0 ? styles.tableRow : styles.tableRowAlt}>
+      <Text style={styles.tableCell1}>{index + 1}.</Text>
+      <Text style={styles.tableCell1Content}>{disciplina.nome}</Text>
+      <Text style={styles.tableCell2}>{disciplina.cargaHoraria}h</Text>
+    </View>
+  ))}
+</View>
             )}
             
             {/* HEADER DA TABELA APENAS NA PRIMEIRA PÁGINA DA LISTA */}
