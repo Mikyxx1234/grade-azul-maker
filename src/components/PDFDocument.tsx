@@ -1,6 +1,5 @@
 import { Document, Page, Text, View, StyleSheet, Image } from '@react-pdf/renderer';
 import { GradeCurricular } from '@/types';
-import cruzeiroBackground from '@/assets/cruzeiro-background.jpeg';
 
 interface PDFDocumentProps {
   gradeCurricular: GradeCurricular;
@@ -14,40 +13,24 @@ const styles = StyleSheet.create({
   
   // Estilos da Capa
   coverPage: {
-    position: 'relative',
     padding: 0,
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
     minHeight: '100vh',
-  },
-  
-  backgroundImage: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    width: '100%',
-    height: '100%',
-    objectFit: 'cover',
-    zIndex: 1,
+    background: 'linear-gradient(135deg, #93c5fd 0%, #1e40af 100%)',
   },
   
   coverContent: {
-    zIndex: 2,
     textAlign: 'center',
-    color: '#001f4a',
+    color: 'white',
     padding: 50,
     width: '100%',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(255, 255, 255, 0.9)',
-    margin: 40,
-    borderRadius: 10,
   },
   
   logo: {
@@ -63,41 +46,47 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     textTransform: 'uppercase',
     letterSpacing: 1,
-    color: '#001f4a',
+    color: 'white',
+    textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3)',
   },
   
   subtitle: {
     fontSize: 18,
     marginBottom: 30,
     fontWeight: 'normal',
-    color: '#001f4a',
+    color: 'white',
+    textShadow: '1px 1px 2px rgba(0, 0, 0, 0.3)',
   },
   
   courseInfo: {
     fontSize: 14,
     marginBottom: 8,
     fontWeight: 'normal',
-    color: '#001f4a',
+    color: 'white',
+    textShadow: '1px 1px 2px rgba(0, 0, 0, 0.3)',
   },
   
   summary: {
     marginTop: 40,
     padding: 20,
-    backgroundColor: 'rgba(0, 31, 74, 0.1)',
+    backgroundColor: 'rgba(255, 255, 255, 0.2)',
     borderRadius: 10,
+    border: '1px solid rgba(255, 255, 255, 0.3)',
   },
   
   summaryTitle: {
     fontSize: 16,
     fontWeight: 'bold',
     marginBottom: 10,
-    color: '#001f4a',
+    color: 'white',
+    textShadow: '1px 1px 2px rgba(0, 0, 0, 0.3)',
   },
   
   summaryText: {
     fontSize: 14,
     marginBottom: 5,
-    color: '#001f4a',
+    color: 'white',
+    textShadow: '1px 1px 2px rgba(0, 0, 0, 0.3)',
   },
   
   // Estilos das páginas de grade
@@ -206,7 +195,6 @@ export function PDFDocument({ gradeCurricular }: PDFDocumentProps) {
       {/* Página da Capa */}
       <Page size="A4" style={styles.page}>
         <View style={styles.coverPage}>
-          <Image style={styles.backgroundImage} src={cruzeiroBackground} />
           <View style={styles.coverContent}>
             
             <Text style={styles.courseTitle}>{dadosCurso.nomeCurso}</Text>
