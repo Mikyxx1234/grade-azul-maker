@@ -276,7 +276,7 @@ export function PDFDocument({ gradeCurricular }: PDFDocumentProps) {
                 <Text style={styles.tableHeaderCell1}>#</Text> {/* Added numbering header */}
                 <Text style={styles.tableHeaderCell2}>DISCIPLINA</Text>
                 <Text style={styles.tableHeaderCell2}>CARGA HORÁRIA</Text> {/* Adjusted to match tableCell2 */}
-              </>
+              </View>
             )}
             
             <View style={styles.table}>
