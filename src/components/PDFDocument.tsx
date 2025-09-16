@@ -8,7 +8,9 @@ interface PDFDocumentProps {
 
 const styles = StyleSheet.create({
   page: {
-    padding: 0,
+    paddingTop: 0,
+    paddingBottom: 0,
+    paddingHorizontal: 0,
     fontFamily: 'Helvetica',
   },
   
@@ -97,17 +99,19 @@ const styles = StyleSheet.create({
   
   // Estilos das páginas de grade
   gradePage: {
-    paddingHorizontal: 40,
-    paddingTop: 20,
-    paddingBottom: 40,
+    paddingHorizontal: 30,
+    paddingTop: 0,
+    paddingBottom: 0,
     backgroundColor: 'white',
+    flex: 1,
   },
   
   header: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 30,
-    paddingBottom: 15,
+    marginBottom: 15,
+    paddingBottom: 10,
+    paddingTop: 20,
     borderBottom: '2 solid #3b82f6',
   },
   
@@ -124,14 +128,18 @@ const styles = StyleSheet.create({
   },
   
   table: {
-    marginTop: 0,
+    margin: 0,
+    padding: 0,
+    flex: 1,
   },
   
   tableHeader: {
     flexDirection: 'row',
     backgroundColor: '#3b82f6',
-    padding: 12,
+    paddingVertical: 8,
+    paddingHorizontal: 8,
     color: 'white',
+    marginBottom: 0,
   },
   
   tableHeaderCell1: {
@@ -150,30 +158,34 @@ const styles = StyleSheet.create({
   tableRow: {
     flexDirection: 'row',
     borderBottom: '1 solid #e5e7eb',
-    paddingVertical: 4,
+    paddingVertical: 2,
     paddingHorizontal: 8,
+    margin: 0,
   },
   
   tableRowAlt: {
     flexDirection: 'row',
     borderBottom: '1 solid #e5e7eb',
-    paddingVertical: 4,
+    paddingVertical: 2,
     paddingHorizontal: 8,
     backgroundColor: '#f8fafc',
+    margin: 0,
   },
   
   tableCell1: {
     flex: 3,
-    fontSize: 9,
+    fontSize: 8.5,
     paddingRight: 10,
+    margin: 0,
   },
   
   tableCell2: {
     flex: 1,
-    fontSize: 9,
+    fontSize: 8.5,
     textAlign: 'center',
     fontWeight: 'bold',
     color: '#1e40af',
+    margin: 0,
   },
   
   footer: {
@@ -192,8 +204,8 @@ const styles = StyleSheet.create({
 export function PDFDocument({ gradeCurricular }: PDFDocumentProps) {
   const { dadosCurso, disciplinas, totalDisciplinas, totalCargaHoraria } = gradeCurricular;
   
-  // Dividir disciplinas em páginas (máximo 35 por página para aproveitar melhor o espaço)
-  const disciplinasPorPagina = 40;
+  // Otimizar para máximo aproveitamento sem espaços em branco
+  const disciplinasPorPagina = 50;
   const paginas: any[][] = [];
   
   for (let i = 0; i < disciplinas.length; i += disciplinasPorPagina) {
