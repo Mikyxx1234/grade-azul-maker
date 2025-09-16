@@ -148,25 +148,25 @@ const styles = StyleSheet.create({
   tableRow: {
     flexDirection: 'row',
     borderBottom: '1 solid #e5e7eb',
-    padding: 10,
+    padding: 6,
   },
   
   tableRowAlt: {
     flexDirection: 'row',
     borderBottom: '1 solid #e5e7eb',
-    padding: 10,
+    padding: 6,
     backgroundColor: '#f8fafc',
   },
   
   tableCell1: {
     flex: 3,
-    fontSize: 10,
+    fontSize: 9,
     paddingRight: 10,
   },
   
   tableCell2: {
     flex: 1,
-    fontSize: 10,
+    fontSize: 9,
     textAlign: 'center',
     fontWeight: 'bold',
     color: '#1e40af',
@@ -188,8 +188,8 @@ const styles = StyleSheet.create({
 export function PDFDocument({ gradeCurricular }: PDFDocumentProps) {
   const { dadosCurso, disciplinas, totalDisciplinas, totalCargaHoraria } = gradeCurricular;
   
-  // Dividir disciplinas em páginas (máximo 25 por página)
-  const disciplinasPorPagina = 25;
+  // Dividir disciplinas em páginas (máximo 35 por página para aproveitar melhor o espaço)
+  const disciplinasPorPagina = 35;
   const paginas: any[][] = [];
   
   for (let i = 0; i < disciplinas.length; i += disciplinasPorPagina) {
@@ -246,11 +246,14 @@ export function PDFDocument({ gradeCurricular }: PDFDocumentProps) {
             </View>
           </View>
           
-          <View style={styles.footer}>
-            <Text>
-              A grade curricular está sujeita a alterações conforme necessário para garantir a qualidade do ensino de acordo com o MEC.
-            </Text>
-          </View>
+          {/* Rodapé apenas na última página */}
+          {indexPagina === paginas.length - 1 && (
+            <View style={styles.footer}>
+              <Text>
+                A grade curricular está sujeita a alterações conforme necessário para garantir a qualidade do ensino de acordo com o MEC.
+              </Text>
+            </View>
+          )}
         </Page>
       ))}
     </Document>
