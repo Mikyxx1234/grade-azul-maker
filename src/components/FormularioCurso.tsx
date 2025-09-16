@@ -71,7 +71,7 @@ export function FormularioCurso({ dadosCurso, onDadosChange }: FormularioCursoPr
                 <SelectValue placeholder="Selecione..." />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="EAD 100% Digital/Aulas ao Vivo">EAD 100% Digital/Aulas ao Vivo</SelectItem>
+                <SelectItem value="EAD">EAD</SelectItem>
                 <SelectItem value="Presencial">Presencial</SelectItem>
                 <SelectItem value="Semipresencial">Semipresencial</SelectItem>
               </SelectContent>

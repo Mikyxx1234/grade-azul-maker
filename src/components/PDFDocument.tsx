@@ -14,8 +14,6 @@ const styles = StyleSheet.create({
   
   // Estilos da Capa
   coverPage: {
-    backgroundColor: '#3b82f6',
-    backgroundImage: `url(${cruzeiroBackground})`,
     position: 'relative',
     padding: 50,
     display: 'flex',
@@ -23,6 +21,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     minHeight: '100vh',
+  },
+  
+  backgroundImage: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
   },
   
   coverOverlay: {
@@ -191,6 +200,7 @@ export function PDFDocument({ gradeCurricular }: PDFDocumentProps) {
       {/* Página da Capa */}
       <Page size="A4" style={styles.page}>
         <View style={styles.coverPage}>
+          <Image style={styles.backgroundImage} src={cruzeiroBackground} />
           <View style={styles.coverOverlay} />
           <View style={styles.coverContent}>
             

@@ -13,7 +13,7 @@ export function GeradorGrade() {
   const [dadosCurso, setDadosCurso] = useState<DadosCurso>({
     nomeCurso: "",
     tipoFormacao: "Bacharelado",
-    modalidade: "EAD 100% Digital/Aulas ao Vivo",
+    modalidade: "EAD",
     duracao: "4 Anos"
   });
 
