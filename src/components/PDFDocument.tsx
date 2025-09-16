@@ -34,15 +34,6 @@ const styles = StyleSheet.create({
     objectFit: 'cover',
   },
   
-  coverOverlay: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    backgroundColor: 'rgba(59, 130, 246, 0.8)',
-  },
-  
   coverContent: {
     zIndex: 10,
     textAlign: 'center',
@@ -79,7 +70,7 @@ const styles = StyleSheet.create({
   summary: {
     marginTop: 40,
     padding: 20,
-    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+    backgroundColor: 'transparent',
     borderRadius: 10,
   },
   
@@ -201,7 +192,6 @@ export function PDFDocument({ gradeCurricular }: PDFDocumentProps) {
       <Page size="A4" style={styles.page}>
         <View style={styles.coverPage}>
           <Image style={styles.backgroundImage} src={cruzeiroBackground} />
-          <View style={styles.coverOverlay} />
           <View style={styles.coverContent}>
             
             <Text style={styles.courseTitle}>{dadosCurso.nomeCurso}</Text>
