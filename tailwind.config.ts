@@ -22,6 +22,8 @@ export default {
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
+          dark: "hsl(var(--primary-dark))",
+          light: "hsl(var(--primary-light))",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -57,6 +59,18 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+      },
+      backgroundImage: {
+        'gradient-cruzeiro': 'var(--gradient-cruzeiro)',
+        'gradient-cruzeiro-dark': 'var(--gradient-cruzeiro-dark)',
+        'gradient-cruzeiro-subtle': 'var(--gradient-cruzeiro-subtle)',
+      },
+      boxShadow: {
+        'cruzeiro': 'var(--shadow-cruzeiro)',
+        'cruzeiro-lg': 'var(--shadow-cruzeiro-lg)',
+      },
+      transitionTimingFunction: {
+        'smooth': 'var(--transition-smooth)',
       },
       borderRadius: {
         lg: "var(--radius)",
