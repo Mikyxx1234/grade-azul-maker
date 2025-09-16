@@ -158,7 +158,7 @@ const styles = StyleSheet.create({
   tableRow: {
     flexDirection: 'row',
     borderBottom: '1 solid #e5e7eb',
-    paddingVertical: 2,
+    paddingVertical: 6,
     paddingHorizontal: 8,
     margin: 0,
   },
@@ -166,7 +166,7 @@ const styles = StyleSheet.create({
   tableRowAlt: {
     flexDirection: 'row',
     borderBottom: '1 solid #e5e7eb',
-    paddingVertical: 2,
+    paddingVertical: 6,
     paddingHorizontal: 8,
     backgroundColor: '#f8fafc',
     margin: 0,
@@ -174,18 +174,20 @@ const styles = StyleSheet.create({
   
   tableCell1: {
     flex: 3,
-    fontSize: 8.5,
+    fontSize: 9,
     paddingRight: 10,
     margin: 0,
+    lineHeight: 1.5,
   },
   
   tableCell2: {
     flex: 1,
-    fontSize: 8.5,
+    fontSize: 9,
     textAlign: 'center',
     fontWeight: 'bold',
     color: '#1e40af',
     margin: 0,
+    lineHeight: 1.5,
   },
   
   footer: {
@@ -205,7 +207,7 @@ export function PDFDocument({ gradeCurricular }: PDFDocumentProps) {
   const { dadosCurso, disciplinas, totalDisciplinas, totalCargaHoraria } = gradeCurricular;
   
   // Otimizar para máximo aproveitamento sem espaços em branco
-  const disciplinasPorPagina = 50;
+  const disciplinasPorPagina = 42;
   const paginas: any[][] = [];
   
   for (let i = 0; i < disciplinas.length; i += disciplinasPorPagina) {
