@@ -193,7 +193,7 @@ export function PDFDocument({ gradeCurricular }: PDFDocumentProps) {
   const { dadosCurso, disciplinas, totalDisciplinas, totalCargaHoraria } = gradeCurricular;
   
   // Dividir disciplinas em páginas (máximo 35 por página para aproveitar melhor o espaço)
-  const disciplinasPorPagina = 45;
+  const disciplinasPorPagina = 40;
   const paginas: any[][] = [];
   
   for (let i = 0; i < disciplinas.length; i += disciplinasPorPagina) {
