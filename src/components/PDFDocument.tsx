@@ -32,8 +32,8 @@ const styles = StyleSheet.create({
   },
   
   logo: {
-    width: 180,
-    height: 72,
+    width: 280,
+    height: 172,
     marginBottom: 50,
     objectFit: 'contain',
     alignSelf: 'center',
