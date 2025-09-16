@@ -242,7 +242,6 @@ export function PDFDocument({ gradeCurricular }: PDFDocumentProps) {
             </View>
             </View>
           </View>
-        </View>
       </Page>
       
      {/* Grade Curricular – lista contínua */}
