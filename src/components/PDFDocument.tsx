@@ -263,8 +263,7 @@ export function PDFDocument({ gradeCurricular }: PDFDocumentProps) {
       <Text style={styles.tableCell1Content}>{disciplina.nome}</Text>
       <Text style={styles.tableCell2}>{disciplina.cargaHoraria}h</Text>
     </View>
-  ))}
-</View>
+  
             )}
             
             {/* HEADER DA TABELA APENAS NA PRIMEIRA PÁGINA DA LISTA */}
