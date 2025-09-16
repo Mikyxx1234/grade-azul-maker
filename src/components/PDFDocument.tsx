@@ -234,9 +234,12 @@ export function PDFDocument({ gradeCurricular }: PDFDocumentProps) {
             <Text style={styles.courseInfo}>Tipo de Formação: {dadosCurso.tipoFormacao}</Text>
             <Text style={styles.courseInfo}>Duração: {dadosCurso.duracao}</Text>
             <Text style={styles.courseInfo}>Modalidade: {dadosCurso.modalidade}</Text>
-                <Text style={styles.tableCell1}>{disciplina.nome}</Text>
+            
+            <View style={styles.summary}>
               <Text style={styles.summaryTitle}>Resumo do Curso</Text>
-            <Text style={styles.tableHeaderCell1}>DISCIPLINA</Text>
+              <Text style={styles.summaryText}>Total de Disciplinas: {totalDisciplinas}</Text>
+              <Text style={styles.summaryText}>Carga Horária Total: {totalCargaHoraria}h</Text>
+            </View>
             </View>
           </View>
         </View>
