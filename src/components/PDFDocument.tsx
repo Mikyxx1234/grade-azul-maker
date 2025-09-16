@@ -286,38 +286,3 @@ export function PDFDocument({ gradeCurricular }: PDFDocumentProps) {
     </Document>
   );
 }
-              <View style={styles.header}>
-                <Text style={styles.headerTitle}>Grade Curricular - {dadosCurso.nomeCurso}</Text>
-              </View>
-            )}
-            
-            <View style={styles.table}>
-              {indexPagina === 0 && (
-                <View style={styles.tableHeader}>
-                  <Text style={styles.tableHeaderCell1}>DISCIPLINA</Text>
-                  <Text style={styles.tableHeaderCell2}>CARGA HORÁRIA</Text>
-                </View>
-              )}
-              
-              {paginaDisciplinas.map((disciplina, index) => (
-                <View key={disciplina.id} style={index % 2 === 0 ? styles.tableRow : styles.tableRowAlt}>
-                  <Text style={styles.tableCell1}>{disciplina.nome}</Text>
-                  <Text style={styles.tableCell2}>{disciplina.cargaHoraria}h</Text>
-                </View>
-              ))}
-            </View>
-          </View>
-          
-          {/* Rodapé apenas na última página */}
-          {indexPagina === paginas.length - 1 && (
-            <View style={styles.footer}>
-              <Text>
-                A grade curricular está sujeita a alterações conforme necessário para garantir a qualidade do ensino de acordo com o MEC.
-              </Text>
-            </View>
-          )}
-        </Page>
-      ))}
-    </Document>
-  );
-}
