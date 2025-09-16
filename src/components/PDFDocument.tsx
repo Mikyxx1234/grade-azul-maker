@@ -8,9 +8,8 @@ interface PDFDocumentProps {
 
 const styles = StyleSheet.create({
   page: {
-    paddingTop: 0,
-    paddingBottom: 0,
-    paddingHorizontal: 0,
+    padding: 0,
+    margin: 0,
     fontFamily: 'Helvetica',
   },
   
@@ -99,7 +98,7 @@ const styles = StyleSheet.create({
   
   // Estilos das páginas de grade
   gradePage: {
-    paddingHorizontal: 25,
+    paddingHorizontal: 20,
     paddingTop: 0,
     paddingBottom: 0,
     margin: 0,
@@ -110,9 +109,9 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 8,
-    paddingBottom: 6,
-    paddingTop: 15,
+    marginBottom: 0,
+    paddingBottom: 0,
+    paddingTop: 10,
     margin: 0,
     borderBottom: '2 solid #3b82f6',
   },
@@ -138,8 +137,8 @@ const styles = StyleSheet.create({
   tableHeader: {
     flexDirection: 'row',
     backgroundColor: '#3b82f6',
-    paddingVertical: 6,
-    paddingHorizontal: 6,
+    paddingVertical: 4,
+    paddingHorizontal: 4,
     color: 'white',
     margin: 0,
   },
@@ -160,36 +159,36 @@ const styles = StyleSheet.create({
   tableRow: {
     flexDirection: 'row',
     borderBottom: '1 solid #e5e7eb',
-    paddingVertical: 3,
-    paddingHorizontal: 6,
+    paddingVertical: 2,
+    paddingHorizontal: 4,
     margin: 0,
   },
   
   tableRowAlt: {
     flexDirection: 'row',
     borderBottom: '1 solid #e5e7eb',
-    paddingVertical: 3,
-    paddingHorizontal: 6,
+    paddingVertical: 2,
+    paddingHorizontal: 4,
     backgroundColor: '#f8fafc',
     margin: 0,
   },
   
   tableCell1: {
     flex: 3,
-    fontSize: 8.5,
-    paddingRight: 10,
+    fontSize: 8,
+    paddingRight: 8,
     margin: 0,
-    lineHeight: 1.3,
+    lineHeight: 1.2,
   },
   
   tableCell2: {
     flex: 1,
-    fontSize: 8.5,
+    fontSize: 8,
     textAlign: 'center',
     fontWeight: 'bold',
     color: '#1e40af',
     margin: 0,
-    lineHeight: 1.3,
+    lineHeight: 1.2,
   },
   
   footer: {
@@ -209,7 +208,7 @@ export function PDFDocument({ gradeCurricular }: PDFDocumentProps) {
   const { dadosCurso, disciplinas, totalDisciplinas, totalCargaHoraria } = gradeCurricular;
   
   // MÁXIMO APROVEITAMENTO - SEM ESPAÇOS EM BRANCO
-  const disciplinasPorPagina = 48;
+  const disciplinasPorPagina = 55;
   const paginas: any[][] = [];
   
   for (let i = 0; i < disciplinas.length; i += disciplinasPorPagina) {
@@ -249,20 +248,18 @@ export function PDFDocument({ gradeCurricular }: PDFDocumentProps) {
           <View style={styles.gradePage}>
             {/* CABEÇALHO APENAS NA PRIMEIRA PÁGINA */}
             {indexPagina === 0 && (
-              <View style={styles.header}>
-                <Text style={styles.headerTitle}>Grade Curricular - {dadosCurso.nomeCurso}</Text>
-              </View>
-            )}
-            
-            <View style={styles.table}>
-              {/* CABEÇALHO DA TABELA APENAS NA PRIMEIRA PÁGINA */}
-              {indexPagina === 0 && (
+              <>
+                <View style={styles.header}>
+                  <Text style={styles.headerTitle}>Grade Curricular - {dadosCurso.nomeCurso}</Text>
+                </View>
                 <View style={styles.tableHeader}>
                   <Text style={styles.tableHeaderCell1}>DISCIPLINA</Text>
                   <Text style={styles.tableHeaderCell2}>CARGA HORÁRIA</Text>
                 </View>
-              )}
-              
+              </>
+            )}
+            
+            <View style={styles.table}>
               {/* LISTA CONTÍNUA SEM QUEBRAS */}
               {paginaDisciplinas.map((disciplina, index) => (
                 <View key={disciplina.id} style={index % 2 === 0 ? styles.tableRow : styles.tableRowAlt}>
