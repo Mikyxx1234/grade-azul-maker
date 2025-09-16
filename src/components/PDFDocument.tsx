@@ -62,6 +62,7 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     textTransform: 'uppercase',
     letterSpacing: 1,
+    color: '#ffffff
   },
   
   subtitle: {
