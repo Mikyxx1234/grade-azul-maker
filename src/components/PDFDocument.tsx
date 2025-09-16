@@ -297,11 +297,4 @@ export function PDFDocument({ gradeCurricular }: PDFDocumentProps) {
       ))}
     </Document>
   );
-}</Text>
-          <View style={styles.table}>
-  {disciplinas.map((disciplina, index) => (
-    <View key={disciplina.id} style={index % 2 === 0 ? styles.tableRow : styles.tableRowAlt}>
-      <Text style={styles.tableCell1}>{index + 1}.</Text>
-      <Text style={styles.tableCell1Content}>{disciplina.nome}</Text>
-      <Text style={styles.tableCell2}>{disciplina.cargaHoraria}h</Text>
-    </View>
+}
