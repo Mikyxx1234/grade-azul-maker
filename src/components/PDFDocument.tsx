@@ -97,7 +97,9 @@ const styles = StyleSheet.create({
   
   // Estilos das páginas de grade
   gradePage: {
-    padding: 40,
+    paddingHorizontal: 40,
+    paddingTop: 20,
+    paddingBottom: 40,
     backgroundColor: 'white',
   },
   
@@ -122,6 +124,7 @@ const styles = StyleSheet.create({
   },
   
   table: {
+    marginTop: 0,
   },
   
   tableHeader: {
@@ -147,13 +150,15 @@ const styles = StyleSheet.create({
   tableRow: {
     flexDirection: 'row',
     borderBottom: '1 solid #e5e7eb',
-    padding: 6,
+    paddingVertical: 4,
+    paddingHorizontal: 8,
   },
   
   tableRowAlt: {
     flexDirection: 'row',
     borderBottom: '1 solid #e5e7eb',
-    padding: 6,
+    paddingVertical: 4,
+    paddingHorizontal: 8,
     backgroundColor: '#f8fafc',
   },
   
@@ -188,7 +193,7 @@ export function PDFDocument({ gradeCurricular }: PDFDocumentProps) {
   const { dadosCurso, disciplinas, totalDisciplinas, totalCargaHoraria } = gradeCurricular;
   
   // Dividir disciplinas em páginas (máximo 35 por página para aproveitar melhor o espaço)
-  const disciplinasPorPagina = 35;
+  const disciplinasPorPagina = 45;
   const paginas: any[][] = [];
   
   for (let i = 0; i < disciplinas.length; i += disciplinasPorPagina) {
@@ -234,10 +239,10 @@ export function PDFDocument({ gradeCurricular }: PDFDocumentProps) {
             
             <View style={styles.table}>
               {indexPagina === 0 && (
-              <View style={styles.tableHeader}>
-                <Text style={styles.tableHeaderCell1}>DISCIPLINA</Text>
-                <Text style={styles.tableHeaderCell2}>CARGA HORÁRIA</Text>
-              </View>
+                <View style={styles.tableHeader}>
+                  <Text style={styles.tableHeaderCell1}>DISCIPLINA</Text>
+                  <Text style={styles.tableHeaderCell2}>CARGA HORÁRIA</Text>
+                </View>
               )}
               
               {paginaDisciplinas.map((disciplina, index) => (
