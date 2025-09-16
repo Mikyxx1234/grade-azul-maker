@@ -36,17 +36,18 @@ const styles = StyleSheet.create({
   },
   
   coverContent: {
-    position: 'relative',
     zIndex: 2,
     textAlign: 'center',
-    color: 'white',
+    color: '#001f4a',
     padding: 50,
     width: '100%',
-    height: '100%',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+    margin: 40,
+    borderRadius: 10,
   },
   
   logo: {
@@ -62,25 +63,27 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     textTransform: 'uppercase',
     letterSpacing: 1,
-    color: '#ffffff',
+    color: '#001f4a',
   },
   
   subtitle: {
     fontSize: 18,
     marginBottom: 30,
     fontWeight: 'normal',
+    color: '#001f4a',
   },
   
   courseInfo: {
     fontSize: 14,
     marginBottom: 8,
     fontWeight: 'normal',
+    color: '#001f4a',
   },
   
   summary: {
     marginTop: 40,
     padding: 20,
-    backgroundColor: 'transparent',
+    backgroundColor: 'rgba(0, 31, 74, 0.1)',
     borderRadius: 10,
   },
   
@@ -88,11 +91,13 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     marginBottom: 10,
+    color: '#001f4a',
   },
   
   summaryText: {
     fontSize: 14,
     marginBottom: 5,
+    color: '#001f4a',
   },
   
   // Estilos das páginas de grade
