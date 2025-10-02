@@ -245,31 +245,37 @@ export function PDFDocument({ gradeCurricular }: PDFDocumentProps) {
       </Page>
       
      {/* Grade Curricular – lista contínua */}
-<Page size="A4" style={styles.page}>
-  <View style={styles.gradePage}>
-
-    {/* Todas as disciplinas em uma lista contínua */}
-    <View style={styles.table}>
-      {disciplinas.map((disciplina, index) => (
-        <View key={disciplina.id} style={index % 2 === 0 ? styles.tableRow : styles.tableRowAlt}>
-          <Text style={styles.tableCell1}>{disciplina.nome}</Text>
-          <Text style={styles.tableCell2}>{disciplina.cargaHoraria}h</Text>
+      <Page size="A4" style={styles.page}>
+        <View style={styles.gradePage}>
+          {/* Cabeçalho da tabela - apenas na primeira página */}
+          <View style={styles.tableHeader}>
+            <Text style={styles.tableHeaderCell1}>DISCIPLINA</Text>
+            <Text style={styles.tableHeaderCell2}>CARGA HORÁRIA</Text>
+          </View>
+          
+          {/* Todas as disciplinas em uma lista contínua */}
+          <View style={styles.table}>
+            {disciplinas.map((disciplina, index) => (
+              <View key={disciplina.id} style={index % 2 === 0 ? styles.tableRow : styles.tableRowAlt}>
+                <Text style={styles.tableCell1}>{disciplina.nome}</Text>
+                <Text style={styles.tableCell2}>{disciplina.cargaHoraria}h</Text>
+              </View>
+            ))}
+          </View>
         </View>
-      ))}
-    </View>
-  </View>
 
-  {/* Rodapé só na última página */}
-  <Text
-    fixed
-    style={styles.footer}
-    render={({ pageNumber, totalPages }) =>
-      pageNumber === totalPages
-        ? 'A grade curricular está sujeita a alterações conforme necessário para garantir a qualidade do ensino de acordo com o MEC.'
-        : ''
-    }
-  />
-</Page>
+        {/* Rodapé só na última página */}
+        <Text
+          fixed
+          style={styles.footer}
+          render={({ pageNumber, totalPages }) =>
+            pageNumber === totalPages
+              ? 'A grade curricular está sujeita a alterações conforme necessário para garantir a qualidade do ensino de acordo com o MEC.'
+              : ''
+          }
+        />
+      </Page>
+
 
     </Document>
   );
