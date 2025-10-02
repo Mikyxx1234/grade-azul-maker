@@ -1,6 +1,9 @@
 import { Document, Page, Text, View, StyleSheet, Image } from '@react-pdf/renderer';
 import { GradeCurricular } from '@/types';
 
+// Fallback para imagem caso a URL externa falhe
+const FALLBACK_LOGO = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjgwIiBoZWlnaHQ9IjE3MiIgdmlld0JveD0iMCAwIDI4MCAxNzIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyODAiIGhlaWdodD0iMTcyIiBmaWxsPSIjMDA0M2NlIi8+Cjx0ZXh0IHg9IjE0MCIgeT0iOTAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIyNCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkxPR088L3RleHQ+Cjwvc3ZnPg==';
+
 interface PDFDocumentProps {
   gradeCurricular: GradeCurricular;
 }
@@ -230,7 +233,7 @@ export function PDFDocument({ gradeCurricular }: PDFDocumentProps) {
           <View style={styles.coverContent}>
             <Image 
               style={styles.logo} 
-              src="https://images.pexels.com/photos/267885/pexels-photo-267885.jpeg?auto=compress&cs=tinysrgb&w=280&h=172"
+              src={FALLBACK_LOGO}
             />
             
             <Text style={styles.courseTitle}>{dadosCurso.nomeCurso}</Text>
