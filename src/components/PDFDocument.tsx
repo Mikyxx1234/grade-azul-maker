@@ -99,8 +99,8 @@ const styles = StyleSheet.create({
   // Estilos das páginas de grade
   gradePage: {
     paddingHorizontal: 20,
-    paddingTop: 0,
-    paddingBottom: 0,
+    paddingTop: 10,
+    paddingBottom: 10,
     margin: 0,
     backgroundColor: 'white',
     flex: 1,
