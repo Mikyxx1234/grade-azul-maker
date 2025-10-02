@@ -171,22 +171,20 @@ const styles = StyleSheet.create({
   tableRow: {
     flexDirection: 'row',
     borderBottom: '1 solid #e5e7eb',
-    paddingVertical: 2,
+    paddingVertical: 4,
     paddingHorizontal: 4,
-    paddingVertical: 4, // Adjusted for better line spacing
     margin: 0,
-    break: 'avoid', // Keep rows from breaking across pages
+    break: 'avoid',
   },
   
   tableRowAlt: {
     flexDirection: 'row',
     borderBottom: '1 solid #e5e7eb',
-    paddingVertical: 2,
+    paddingVertical: 4,
     paddingHorizontal: 4,
-    paddingVertical: 4, // Adjusted for better line spacing
     backgroundColor: '#f8fafc',
     margin: 0,
-    break: 'avoid', // Keep rows from breaking across pages
+    break: 'avoid',
   },
   
   tableCell1: {
