@@ -48,6 +48,10 @@ const styles = StyleSheet.create({
     letterSpacing: 1.5,
     color: '#001f4a',
     textAlign: 'center',
+    wordWrap: 'break-word',
+    lineHeight: 1.2,
+    maxWidth: '90%',
+    alignSelf: 'center',
   },
   
   subtitle: {
