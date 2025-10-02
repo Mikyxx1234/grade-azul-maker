@@ -48,12 +48,12 @@ const styles = StyleSheet.create({
     letterSpacing: 1.5,
     color: '#001f4a',
     textAlign: 'center',
-    wordBreak: 'keep-all',
-    overflowWrap: 'break-word',
+    wordBreak: 'normal',
+    overflowWrap: 'normal',
     lineHeight: 1.2,
     maxWidth: '90%',
     alignSelf: 'center',
-    whiteSpace: 'pre-wrap',
+    whiteSpace: 'normal',
   },
   
   subtitle: {
