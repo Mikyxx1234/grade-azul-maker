@@ -247,11 +247,6 @@ export function PDFDocument({ gradeCurricular }: PDFDocumentProps) {
      {/* Grade Curricular – lista contínua */}
 <Page size="A4" style={styles.page}>
   <View style={styles.gradePage}>
-    {/* Cabeçalho da tabela */}
-    <View style={styles.tableHeader}>
-      <Text style={styles.tableHeaderCell1}>DISCIPLINA</Text>
-      <Text style={styles.tableHeaderCell2}>CARGA HORÁRIA</Text>
-    </View>
 
     {/* Todas as disciplinas em uma lista contínua */}
     <View style={styles.table}>
