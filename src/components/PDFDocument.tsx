@@ -1,5 +1,4 @@
 import { Document, Page, Text, View, StyleSheet, Image } from '@react-pdf/renderer';
-import { Svg, Defs, LinearGradient, Stop, Rect } from '@react-pdf/renderer';
 import { GradeCurricular } from '@/types';
 
 interface PDFDocumentProps {
@@ -231,7 +230,7 @@ export function PDFDocument({ gradeCurricular }: PDFDocumentProps) {
           <View style={styles.coverContent}>
             <Image 
               style={styles.logo} 
-              src="/logo teste.png"
+              src="https://images.pexels.com/photos/267885/pexels-photo-267885.jpeg?auto=compress&cs=tinysrgb&w=280&h=172"
             />
             
             <Text style={styles.courseTitle}>{dadosCurso.nomeCurso}</Text>
@@ -272,7 +271,6 @@ export function PDFDocument({ gradeCurricular }: PDFDocumentProps) {
 
         {/* Rodapé só na última página */}
         <Text
-          fixed
           style={styles.footer}
           render={({ pageNumber, totalPages }) =>
             pageNumber === totalPages
