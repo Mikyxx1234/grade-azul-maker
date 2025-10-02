@@ -33,7 +33,7 @@ export function parseGradeCurricular(texto: string): Disciplina[] {
         
         const cargaHoraria = parseInt(match[2]);
         
-        if (nome && nome.length > 2 && cargaHoraria > 0 && cargaHoraria <= 1000) {
+        if (nome && nome.length > 2 && cargaHoraria >= 0 && cargaHoraria <= 1000) {
           disciplinas.push({
             id: `disciplina-${index}-${Date.now()}`,
             nome,
@@ -64,7 +64,7 @@ export function validarGradeCurricular(texto: string): {
   const linhasNaoProcessadas = linhas.length - preview.length;
   
   if (linhasNaoProcessadas > 0) {
-    errors.push(`${linhasNaoProcessadas} linha(s) não puderam ser processadas. Verifique se seguem o formato: NOME DA DISCIPLINA + CARGA HORÁRIA`);
+    errors.push(`${linhasNaoProcessadas} linha(s) não puderam ser processadas. Verifique se seguem o formato: NOME DA DISCIPLINA + CARGA HORÁRIA (pode ser 0)`);
   }
   
   // Verificar se há disciplinas com nomes muito curtos
